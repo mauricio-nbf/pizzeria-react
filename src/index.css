@@ -1,0 +1,104 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Arial', 'sans-serif'
+}
+
+.navbar{
+  background-color: rgb(54, 50, 50);
+  color: white;
+  padding: 5px;
+}
+
+.primerElemento{
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+    width: 100%;                     /* Ocupa todo el ancho disponible */
+    
+    
+}
+
+.nombrePizzeriaYopcionesSitio{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    width: 50%;
+    align-items: center;
+   
+}
+
+.opcionesSitio{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    align-items: center;
+      
+}
+
+.btns-detalleProductoOpecionSitio{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 15px;
+  gap: 80px;
+}
+
+.btn-opcionSitio{
+  color: white;
+  background-color: rgb(39, 39, 39);
+  border-color: white;
+  border-radius: 5%;
+  padding: 5px;
+}
+
+.btn-totalCuenta{
+  color: rgba(53, 178, 216, 0.968);
+    background-color: rgb(39, 39, 39);
+  border-color: rgba(53, 178, 216, 0.968);
+  border-radius: 5%;
+  padding: 5px;
+}
+
+
+
+.header{
+  background-image: url("../src/assets/img/Header.jpg");
+  color: white;
+  padding: 10%;
+  text-align: center;
+}
+
+.cards{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  border-color: black;
+  margin: 40px auto;
+}
+
+.precio{
+  display: flex;
+  justify-content: center;
+
+}
+
+
+
+.btn-detalleProducto{
+  border-color: white;
+  border-radius: 10%;
+  padding: 5px;
+}
+
+
+.footer{
+  
+  background-color: rgb(54, 50, 50);
+  color: white;
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+}
