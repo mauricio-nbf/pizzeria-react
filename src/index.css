@@ -93,6 +93,18 @@
   padding: 5px;
 }
 
+.registroUsuario{
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.login{
+  text-align: center;
+  align-items: center;
+  padding: 10px;
+}
+
 
 .footer{
   
