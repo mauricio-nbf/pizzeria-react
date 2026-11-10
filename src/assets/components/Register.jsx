@@ -10,7 +10,7 @@ function Register() {
   const [mensaje, setMensaje] = useState("")
   const [mensaje2, setMensaje2] = useState("")
   
-  
+  // DATO PARA FORZAR
   
   const [color, setColor] = useState("")
   
