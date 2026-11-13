@@ -7,6 +7,7 @@ import Register from './assets/components/Register'
 import Cart from './assets/components/Cart'
 import Footer from './assets/components/Footer'
 import Login from './assets/components/Login'
+import Pizza from './assets/components/Pizza'
 
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
   return (
     <>
       <Navbar/>
-      <Home/>
-      <Register/>
-      <Login/>
-      <Cart/>
+      {/* <Home/> */}
+      {/* <Register/> */}
+      {/* <Login/> */}
+      {/* <Cart/> */}
+      <Pizza />
 
       <Footer/>
     </>
