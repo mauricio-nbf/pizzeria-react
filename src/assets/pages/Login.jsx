@@ -65,7 +65,7 @@ function Login() {
             value = {email}
             onChange={handleChange}
             />
-            <p>Pasaword</p>
+            <p>Password</p>
             <input 
             type="texts" 
             name = "password"

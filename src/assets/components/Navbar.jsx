@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Navbar = () => {
 
@@ -17,20 +18,20 @@ const Navbar = () => {
                 </div>
 
                 <div className='opcionesSitio'>
-                    <a className="nav-item nav-link active" href="#"><button className='btn-opcionSitio'>🍕 Home</button></a>
+                    <Link className="nav-item nav-link active" to="/"><button className='btn-opcionSitio'>🍕 Home</button></Link>
                 
-
+                    <Link className="nav-item nav-link" to="/profile"><button className='btn-opcionSitio'>🔓 Profile</button></Link>
                 {
 
                     token ? (
                         <>
-                            <a className="nav-item nav-link" href="#"><button className='btn-opcionSitio'>🔓 Profile</button></a>
-                            <a className="nav-item nav-link" href="#"><button className='btn-opcionSitio'>🔒 Logout</button></a>
+                            
+                            <Link className="nav-item nav-link" to="/"><button className='btn-opcionSitio'>🔒 Logout</button></Link>
                         </>
                     ):(
                         <>
-                        <a className="nav-item nav-link" href="#"><button className='btn-opcionSitio'>🔏 Login</button></a>
-                        <a className="nav-item nav-link" href="#"><button className='btn-opcionSitio'>🔐Register</button></a>
+                        <Link className="nav-item nav-link" to="/login"><button className='btn-opcionSitio'>🔏 Login</button></Link>
+                        <Link className="nav-item nav-link" to="/register"><button className='btn-opcionSitio'>🔐Register</button></Link>
                         </> 
                     )
 
@@ -41,7 +42,7 @@ const Navbar = () => {
 
           
             <div className='totalCuenta'>
-                 <a className="nav-item nav-link" href="#"><button className='btn-totalCuenta'>🛒Total:$ {total.toLocaleString()}</button></a>
+                 <Link className="nav-item nav-link" to="/cart"><button className='btn-totalCuenta'>🛒Total:$ {total.toLocaleString()}</button></Link>
             </div>
         
          
