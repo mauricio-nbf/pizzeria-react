@@ -1,9 +1,12 @@
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
+import { UserContext } from '../context/UserContext'
 
 function Cart() {
     // Todo viene del contexto: el mismo carrito que llena Home
     const { cart, countAument, countDeagre, total } = useContext(CartContext)
+
+        const { token } = useContext(UserContext)
 
     return (
         <div className="container">
@@ -26,7 +29,7 @@ function Cart() {
             )}
 
             <h2>Total: ${total.toLocaleString('es-CL')}</h2>
-            <button>Pagar</button>
+           <button disabled={!token}>Pagar</button>
         </div>
     )
 }

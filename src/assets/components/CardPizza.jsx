@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
+import { Link } from 'react-router-dom'
 
 
 const CardPizza = ({product}) => {
@@ -31,7 +32,7 @@ const CardPizza = ({product}) => {
             <p className='precio'>Precio: $ <span className="h5 fw-bold ms-3"> {product.price}</span></p>
 
              <div className='btns-detalleProductoOpecionSitio'>
-                        <button className='btn-detalleProducto'>Ver Mas 👀</button>
+                        <Link to={`/pizza/${product.id}`}><button className='btn-detalleProducto'>Ver Mas 👀</button></Link>
                         <button className='btn-opcionSitio' onClick={() => agregarCart(product)}>Añadir 🛒</button>
 
                           

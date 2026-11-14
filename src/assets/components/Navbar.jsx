@@ -2,11 +2,13 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useContext } from 'react'
 import { CartContext } from '../context/CartContext'
+import { UserContext } from '../context/UserContext'
+
 
 const Navbar = () => {
 
     const { total } = useContext(CartContext);
-    const token = false;
+        const { token, logout } = useContext(UserContext);
 
   return (
     <nav className="navbar">
@@ -22,21 +24,18 @@ const Navbar = () => {
                 <div className='opcionesSitio'>
                     <Link className="nav-item nav-link active" to="/"><button className='btn-opcionSitio'>🍕 Home</button></Link>
                 
-                    <Link className="nav-item nav-link" to="/profile"><button className='btn-opcionSitio'>🔓 Profile</button></Link>
-                {
-
+                                    {
                     token ? (
                         <>
-                            
-                            <Link className="nav-item nav-link" to="/"><button className='btn-opcionSitio'>🔒 Logout</button></Link>
+                            <Link className="nav-item nav-link" to="/profile"><button className='btn-opcionSitio'>🔓 Profile</button></Link>
+                            <button className='btn-opcionSitio' onClick={logout}>🔒 Logout</button>
                         </>
-                    ):(
+                    ) : (
                         <>
-                        <Link className="nav-item nav-link" to="/login"><button className='btn-opcionSitio'>🔏 Login</button></Link>
-                        <Link className="nav-item nav-link" to="/register"><button className='btn-opcionSitio'>🔐Register</button></Link>
-                        </> 
+                            <Link className="nav-item nav-link" to="/login"><button className='btn-opcionSitio'>🔏 Login</button></Link>
+                            <Link className="nav-item nav-link" to="/register"><button className='btn-opcionSitio'>🔐Register</button></Link>
+                        </>
                     )
-
                 }
 
                 </div>
