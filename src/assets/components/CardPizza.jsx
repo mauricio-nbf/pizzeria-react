@@ -1,8 +1,13 @@
 import React from 'react'
-import { productos } from '../data/Productos'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 
 const CardPizza = ({product}) => {
+
+ 
+  const { agregarCart } = useContext(CartContext)
+
   return (
 
    
@@ -27,7 +32,7 @@ const CardPizza = ({product}) => {
 
              <div className='btns-detalleProductoOpecionSitio'>
                         <button className='btn-detalleProducto'>Ver Mas 👀</button>
-                        <button className='btn-opcionSitio'>Añadir 🛒</button>
+                        <button className='btn-opcionSitio' onClick={() => agregarCart(product)}>Añadir 🛒</button>
 
                           
              </div>           

@@ -1,45 +1,9 @@
-import { useState } from 'react'
-import { pizzaCart } from '../data/Productos'
+import { useContext } from 'react'
+import { CartContext } from '../context/CartContext'
 
 function Cart() {
-    // El estado parte con las pizzas del carrito simulado
-    const [cart, setCart] = useState(pizzaCart)
-
-    // Botón +: copia el array y le suma 1 al count de la pizza con ese id
-    const countAument = (id) => {
-        const nuevoCarrito = cart.map((pizza) => {
-            if (pizza.id === id) {
-                return { ...pizza, count: pizza.count + 1 }
-            }
-            return pizza
-        })
-        setCart(nuevoCarrito)
-    }
-
-    // Botón -: si queda en 1, se elimina del carrito; si no, resta 1
-    const countDeagre = (id) => {
-        const pizzaActual = cart.find((pizza) => pizza.id === id)
-
-        if (pizzaActual.count === 1) {
-            const nuevoCarrito = cart.filter((pizza) => pizza.id !== id)
-            setCart(nuevoCarrito)
-            return
-        }
-
-        const nuevoCarrito = cart.map((pizza) => {
-            if (pizza.id === id) {
-                return { ...pizza, count: pizza.count - 1 }
-            }
-            return pizza
-        })
-        setCart(nuevoCarrito)
-    }
-
-    // Total: suma de precio x cantidad. Se recalcula en cada render
-    let total = 0
-    cart.forEach((pizza) => {
-        total += pizza.price * pizza.count
-    })
+    // Todo viene del contexto: el mismo carrito que llena Home
+    const { cart, countAument, countDeagre, total } = useContext(CartContext)
 
     return (
         <div className="container">
