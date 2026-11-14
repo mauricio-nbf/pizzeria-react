@@ -1,5 +1,5 @@
-import { useState } from 'react'
-
+import { useState, useContext } from 'react'
+import { UserContext } from '../context/UserContext'
 
 
 function Register() {
@@ -9,32 +9,34 @@ function Register() {
   const [confPassword, setConfirmPassword] = useState("")
   const [mensaje, setMensaje] = useState("")
   const [mensaje2, setMensaje2] = useState("")
+    const { register } = useContext(UserContext)
   
   // DATO PARA FORZAR
   
   const [color, setColor] = useState("")
   
-  const handleSubmit =  (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault()
-      if(
-        
-        email === "" ||
-        password === "" || 
-        confPassword === "" 
-      )
+    if (email === "" || password === "" || confPassword === "") {
+      setColor("red")
+      setMensaje("Todos los campos son obligatorios")
+      return
+    }
 
-      {
-        setColor("red")        
-        setMensaje("Todos los campos son obligatorios")
-        return
-      }
+    if (password !== confPassword) {
+      setColor("red")
+      setMensaje("Las contraseñas no coinciden")
+      return
+    }
 
+    const error = await register(email, password)
 
-
-      setColor("green")
-      setMensaje("Usuario registrado correctamente")
+    if (error) {
+      setColor("red")
+      setMensaje(error)
+    }
   }
-
+  
   const handleChange = (e)=>{
     const {name, value} = e.target
     console.log(value)
@@ -49,7 +51,7 @@ function Register() {
 
             if(value.length<6){
         setColor("red")        
-        setMensaje("La contraseña debe tener más de 6 caracteres")
+        setMensaje("La contraseña debe tener al menos 6 caracteres")
         return
       } else {
                         
@@ -60,21 +62,8 @@ function Register() {
 
     }
 
-    if(name === "confPassword"){
+        if (name === "confPassword") {
       setConfirmPassword(value)
-
-        if(password === value){
-        setMensaje2("")
-        return
-      } else {
-
-        setColor("red")        
-        setMensaje2("Debe ser igual a la contraseña ingresada")
-                        
-        
-      }
-
-
     }
 
   } 
@@ -94,7 +83,7 @@ function Register() {
       />
     <p>Password</p>
     <input 
-      type="texts" 
+      type="password" 
       name = "password"
       value={password}
       onChange={handleChange}
@@ -103,13 +92,13 @@ function Register() {
 
     <p>Confirmación Password</p>
     <input 
-      type="text" 
+      type="password" 
       name = "confPassword" 
       value={confPassword}
       onChange={handleChange}
       />
 
-    {mensaje2 && <p style={{color}}>{mensaje2}</p>}
+ 
 
    <button type='submit'>
     Registrarse

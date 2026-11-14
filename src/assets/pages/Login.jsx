@@ -1,5 +1,5 @@
-import { useState } from 'react'
-
+import { useState, useContext } from 'react'
+import { UserContext } from '../context/UserContext'
 
 
 function Login() {
@@ -9,22 +9,27 @@ function Login() {
   const [mensaje, setMensaje] = useState("")
   const [mensaje2, setMensaje2] = useState("")
   
-  
+  const { login } = useContext(UserContext)
   
   const [color, setColor] = useState("")
   
-  const handleSubmit =  (e) => {
+    const handleSubmit = async (e) => {
     e.preventDefault()
     if (email === "" || password === "") {
-        setColor("red")        
-        setMensaje("Todos los campos son obligatorios")
-        return
-      }
+      setColor("red")
+      setMensaje("Todos los campos son obligatorios")
+      return
+    }
 
+    const error = await login(email, password)
 
-
-      setColor("green")
-      setMensaje("Usuario registrado correctamente")
+    if (error) {
+      setColor("red")
+      setMensaje(error)
+      return
+    }
+    // Si no hubo error, el token ya está guardado:
+    // la ruta /login de App.jsx redirige sola al Home
   }
 
   const handleChange = (e)=>{
@@ -41,7 +46,7 @@ function Login() {
 
             if(value.length<6){
         setColor("red")        
-        setMensaje("La contraseña debe tener más de 6 caracteres")
+        setMensaje("La contraseña debe tener el menos 6 caracteres")
         return
       } else {
                         
@@ -67,7 +72,7 @@ function Login() {
             />
             <p>Password</p>
             <input 
-            type="texts" 
+            type="password" 
             name = "password"
             value={password}
             onChange={handleChange}
